@@ -1,0 +1,14 @@
+.account-container {
+    width: 90%;
+}
+
+.img {
+    width: 200px;
+    height: 200px;
+    background: #000;
+    margin: 0.5rem;
+}
+
+.account-block {
+    display: flex;
+}

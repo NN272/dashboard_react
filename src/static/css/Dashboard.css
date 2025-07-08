@@ -1,0 +1,11 @@
+.block {
+    display: flex;
+}
+
+.dashboard-container {
+    width: 90%;
+}
+
+.column-container {
+    width: 25%;
+}

@@ -1,0 +1,7 @@
+.main-container {
+    width: 90%;
+}
+
+.item-container {
+    display: flex;  
+}

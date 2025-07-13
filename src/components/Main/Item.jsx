@@ -9,7 +9,8 @@ const Item = (props) => {
             <Card.Body>
                 <Card.Title>{props.title}</Card.Title>
                 <Card.Text>
-                    {props.text}
+                    {props.text} - 
+                    Amount of tasks: {props.amount}
                 </Card.Text>
                 <Button variant="primary">Start editing</Button>
             </Card.Body>

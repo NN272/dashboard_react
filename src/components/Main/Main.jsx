@@ -1,20 +1,23 @@
 import React from 'react'
 import Item from './Item'
 import '../../static/css/Main.css'
-import { useSelector } from 'react-redux'
-import { selectDashboard } from '../../redux/reducers/dashboardReducer'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectDashboard, addDashboard, removeDashboard } from '../../redux/reducers/dashboardReducer'
+import Add from './Add'
 
 const Main = () => {
     const dashboard = useSelector(selectDashboard);
-    console.log(dashboard);
 
     return (
         <div className='main-container'>
             <h1>Your dashboards</h1>
             <hr />
             <div className='item-container'>
-                <Item title={dashboard.name} text={dashboard.description} amount={dashboard.tasks.length}/>
+                {
+                    dashboard.dashboards.map(el => <Item id={el.id} title={el.name} text={el.description} amount={el.tasks != [] ? el.tasks.length : '0'}/>)
+                }
             </div>
+            <Add></Add>
         </div>
     )
 }

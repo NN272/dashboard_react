@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const done = "Done";
+const upcoming = "Upcoming";
+const forReview = "For review";
+const inProgress = "In progress";
+
 export const dashboardSlice = createSlice({
     name: "dashboard",
     initialState: {
@@ -11,17 +16,17 @@ export const dashboardSlice = createSlice({
                 tasks: [
                     {
                         id: 0,
-                        status: "done",
+                        status: inProgress,
                         task: "Test task 1"
                     },
                     {
                         id: 1,
-                        status: "done",
+                        status: done,
                         task: "Test task 2"
                     },
                     {
                         id: 2,
-                        status: "done",
+                        status: upcoming,
                         task: "Test task 3"
                     },
                 ]
@@ -33,17 +38,17 @@ export const dashboardSlice = createSlice({
                 tasks: [
                     {
                         id: 0,
-                        status: "done",
+                        status: done,
                         task: "Test task 1"
                     },
                     {
                         id: 1,
-                        status: "done",
+                        status: forReview,
                         task: "Test task 2"
                     },
                     {
                         id: 2,
-                        status: "done",
+                        status: done,
                         task: "Test task 3"
                     },
                 ]

@@ -8,8 +8,8 @@ const Navbar = () => {
         <div className="navbar-container">
             <User />
             <hr />
-            <Item text="Home" />
-            <Item text="Account" />
+            <Item text="Home" path="/" />
+            <Item text="Account" path="/account" />
         </div>
     )
 }

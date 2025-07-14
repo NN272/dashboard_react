@@ -1,8 +1,8 @@
 import React from 'react'
 import Item from './Item'
 import '../../static/css/Main.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectDashboard, addDashboard, removeDashboard } from '../../redux/reducers/dashboardReducer'
+import { useSelector } from 'react-redux'
+import { selectDashboard } from '../../redux/reducers/dashboardReducer'
 import Add from './Add'
 
 const Main = () => {

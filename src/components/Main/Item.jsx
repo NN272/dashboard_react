@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useDispatch } from 'react-redux';
 import { removeDashboard } from '../../redux/reducers/dashboardReducer';
+import { NavLink } from 'react-router';
 
 
 const Item = (props) => {
@@ -17,7 +18,7 @@ const Item = (props) => {
                     Amount of tasks: {props.amount} ||
                     id: {props.id}
                 </Card.Text>
-                <Button variant="primary">Start editing</Button>
+                <NavLink to={"/dashboard/" + props.id}><Button variant="primary">Start editing</Button></NavLink>
                 <Button style={{marginLeft: "10px"}} variant="danger" onClick={() => dispatch(removeDashboard(props.id))}>Remove</Button>
             </Card.Body>
         </Card>

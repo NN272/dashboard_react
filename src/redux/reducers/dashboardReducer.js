@@ -66,10 +66,18 @@ export const dashboardSlice = createSlice({
         },
         removeDashboard: (state, action) => {
             state.dashboards.splice(action.payload, 1);
-        }
+        },
+        setNewStatus: (state, action) => {
+            state.dashboards[action.payload.dashboardId].tasks.forEach((element) => {
+                if(element.id === action.payload.id) {
+                    element.status = action.payload.status;
+                    console.log(`${element.id} status changed to ${action.payload.status}`);
+                }
+            });
+        },
     }
 });
 
-export const { addDashboard, removeDashboard } = dashboardSlice.actions;
+export const { addDashboard, removeDashboard, setNewStatus } = dashboardSlice.actions;
 export const selectDashboard = (state) => state.dashboard;
 export default dashboardSlice.reducer;

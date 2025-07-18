@@ -3,15 +3,17 @@ import Column from './Column'
 import '../../static/css/Dashboard.css'
 import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
-import { selectDashboard } from '../../redux/reducers/dashboardReducer'
+import { selectDashboard, setNewStatus } from '../../redux/reducers/dashboardReducer'
 import { useState } from 'react'
 import { DragEndEvent, DndContext } from '@dnd-kit/core'
 import { selectColumn } from '../../redux/reducers/columnReducer'
+import { useDispatch } from 'react-redux'
 
 const Dashboard = (props) => {
     let id = useParams();
     const dashboard = useSelector(selectDashboard);
     const column = useSelector(selectColumn);
+    const dispatch = useDispatch();
 
     const [tasks, setTasks] = useState(dashboard.dashboards[id.id].tasks);
 
@@ -27,6 +29,12 @@ const Dashboard = (props) => {
             ...task,
             status: newStatus
         } : task))
+
+        dispatch(setNewStatus({
+            id: taskId,
+            status: newStatus,
+            dashboardId: [id.id]
+        }));
     }
 
     return (

@@ -4,22 +4,43 @@ import '../../static/css/Dashboard.css'
 import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import { selectDashboard } from '../../redux/reducers/dashboardReducer'
+import { useState } from 'react'
+import { DragEndEvent, DndContext } from '@dnd-kit/core'
+import { selectColumn } from '../../redux/reducers/columnReducer'
 
 const Dashboard = (props) => {
     let id = useParams();
     const dashboard = useSelector(selectDashboard);
+    const column = useSelector(selectColumn);
+
+    const [tasks, setTasks] = useState(dashboard.dashboards[id.id].tasks);
+
+    function handleDragEnd(DragEndEvent) {
+        const event = DragEndEvent;
+        const {active, over} = event;
+
+        if (!over) return;
+        const taskId = active.id;
+        const newStatus = over.id;
+
+        setTasks(() => tasks.map(task => task.id === taskId ? {
+            ...task,
+            status: newStatus
+        } : task))
+    }
 
     return (
+        <DndContext onDragEnd={handleDragEnd}>
         <div className="dashboard-container">
             <h1>{dashboard.dashboards[id.id].name}</h1>
             <hr />
             <div className='block'>
-                <Column title="Upcoming" tasks={dashboard.dashboards[id.id].tasks}/>
-                <Column title="In progress" tasks={dashboard.dashboards[id.id].tasks}/>
-                <Column title="For review" tasks={dashboard.dashboards[id.id].tasks}/>
-                <Column title="Done" tasks={dashboard.dashboards[id.id].tasks} />
+                {
+                    column.columns.map(el => <Column title={el.title} key={el.id} id={el.id} tasks={tasks.filter(task => task.status == el.id)} />)
+                }
             </div>
         </div>
+        </DndContext>
     )
 }
 

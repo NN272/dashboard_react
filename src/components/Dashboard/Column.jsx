@@ -1,22 +1,19 @@
 import React from 'react'
 import Item from './Item'
+import { useDroppable } from '@dnd-kit/core';
 
 const Column = (props) => {
-    let array = [];
-
-    for(let i = 0;i < props.tasks.length;i+=1) {
-        if(props.tasks[i].status == props.title) {
-            array.push(props.tasks[i]);
-        }
-    }
-
-    console.log(array);
+    const {setNodeRef} = useDroppable({
+        id: props.id
+    });
 
     return (
         <div className='column-container'>
             <h3>{props.title}</h3>
             <hr />
-            {array.map(el => <Item text={el.task}/>)}
+            <div ref={setNodeRef} style={{height: "500px"}}>
+                {props.tasks.map(el => <Item text={el.task} key={el.id} id={el.id} />)}
+            </div>
         </div>
     )
 }

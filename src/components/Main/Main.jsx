@@ -14,7 +14,7 @@ const Main = () => {
             <hr />
             <div className='item-container'>
                 {
-                    dashboard.dashboards.map(el => <Item id={el.id} title={el.name} text={el.description} amount={el.tasks != [] ? el.tasks.length : '0'}/>)
+                    dashboard.dashboards.map(el => <Item id={el.id} title={el.name} key={el.id} text={el.description} amount={el.tasks != [] ? el.tasks.length : '0'}/>)
                 }
             </div>
             <Add></Add>

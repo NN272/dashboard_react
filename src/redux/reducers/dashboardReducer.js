@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const done = "Done";
-const upcoming = "Upcoming";
-const forReview = "For review";
-const inProgress = "In progress";
+const done = "DONE";
+const upcoming = "UP_COMING";
+const forReview = "FOR_REVIEW";
+const inProgress = "IN_PROGRESS";
 
 export const dashboardSlice = createSlice({
     name: "dashboard",

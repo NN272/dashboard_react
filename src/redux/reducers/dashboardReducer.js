@@ -75,9 +75,16 @@ export const dashboardSlice = createSlice({
                 }
             });
         },
+        addTask: (state, action) => {
+            state.dashboards[action.payload.dashboardId].tasks.push({
+                id: state.dashboards[action.payload.dashboardId].tasks[state.dashboards[action.payload.dashboardId].tasks.length-1].id + 1,
+                status: action.payload.status,
+                task: action.payload.task
+            })
+        }
     }
 });
 
-export const { addDashboard, removeDashboard, setNewStatus } = dashboardSlice.actions;
+export const { addDashboard, removeDashboard, setNewStatus, addTask } = dashboardSlice.actions;
 export const selectDashboard = (state) => state.dashboard;
 export default dashboardSlice.reducer;

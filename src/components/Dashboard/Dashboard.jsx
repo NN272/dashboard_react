@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { DragEndEvent, DndContext } from '@dnd-kit/core'
 import { selectColumn } from '../../redux/reducers/columnReducer'
 import { useDispatch } from 'react-redux'
+import Add from './Add'
 
 const Dashboard = (props) => {
     let id = useParams();
@@ -47,9 +48,11 @@ const Dashboard = (props) => {
                     column.columns.map(el => <Column title={el.title} key={el.id} id={el.id} tasks={tasks.filter(task => task.status == el.id)} />)
                 }
             </div>
+            <Add columns={column.columns} dashboardId={id.id} />
         </div>
         </DndContext>
     )
 }
+
 
 export default Dashboard;

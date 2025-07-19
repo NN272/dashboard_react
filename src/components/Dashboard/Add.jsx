@@ -27,12 +27,10 @@ const Add = (props) => {
             />
             <select onChange={columnSelect}>
                 {
-                    props.columns.map(el => <option value={el.id}>{el.title}</option>)
+                    props.columns.map(el => <option key={el.id} value={el.id}>{el.title}</option>)
                 }
             </select>
-            <button onClick={() => {
-                dispatch(addTask(info))
-                }}>Add</button>
+            <button onClick={() => dispatch(addTask(info))}>Add</button>
         </div>
     )
 }

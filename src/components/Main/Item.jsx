@@ -14,9 +14,7 @@ const Item = (props) => {
             <Card.Body>
                 <Card.Title>{props.title}</Card.Title>
                 <Card.Text>
-                    {props.text} ||
-                    Amount of tasks: {props.amount} ||
-                    id: {props.id}
+                    {props.text}
                 </Card.Text>
                 <NavLink to={"/dashboard/" + props.id}><Button variant="primary">Start editing</Button></NavLink>
                 <Button style={{marginLeft: "10px"}} variant="danger" onClick={() => dispatch(removeDashboard(props.id))}>Remove</Button>

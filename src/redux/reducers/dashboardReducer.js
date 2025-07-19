@@ -76,15 +76,24 @@ export const dashboardSlice = createSlice({
             });
         },
         addTask: (state, action) => {
+            let index = 0;
+            if (state.dashboards[action.payload.dashboardId].tasks.length != 0) {
+                index = state.dashboards[action.payload.dashboardId].tasks[state.dashboards[action.payload.dashboardId].tasks.length-1].id + 1
+            }
+
             state.dashboards[action.payload.dashboardId].tasks.push({
-                id: state.dashboards[action.payload.dashboardId].tasks[state.dashboards[action.payload.dashboardId].tasks.length-1].id + 1,
+                id: index,
                 status: action.payload.status,
                 task: action.payload.task
             })
+        },
+        removeTask: (state, action) => {
+            console.log(action.payload);
+            state.dashboards[action.payload.dashboardId].tasks = state.dashboards[action.payload.dashboardId].tasks.filter(task => task.id !== action.payload.taskId);
         }
     }
 });
 
-export const { addDashboard, removeDashboard, setNewStatus, addTask } = dashboardSlice.actions;
+export const { addDashboard, removeDashboard, setNewStatus, addTask, removeTask } = dashboardSlice.actions;
 export const selectDashboard = (state) => state.dashboard;
 export default dashboardSlice.reducer;
